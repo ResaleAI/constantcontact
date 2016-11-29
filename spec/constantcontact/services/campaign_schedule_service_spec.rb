@@ -17,7 +17,7 @@ describe ConstantContact::Services::CampaignScheduleService do
       json = load_file('schedule_response.json')
       net_http_resp = Net::HTTPResponse.new(1.0, 200, 'OK')
 
-      response = RestClient::Response.create(json, net_http_resp, {}, @request)
+      response = RestClient::Response.create(json, net_http_resp, @request)
       RestClient.stub(:post).and_return(response)
       new_schedule = ConstantContact::Components::Schedule.create(JSON.parse(json))
 
@@ -34,7 +34,7 @@ describe ConstantContact::Services::CampaignScheduleService do
       json = load_file('schedules_response.json')
       net_http_resp = Net::HTTPResponse.new(1.0, 200, 'OK')
 
-      response = RestClient::Response.create(json, net_http_resp, {}, @request)
+      response = RestClient::Response.create(json, net_http_resp, @request)
       RestClient.stub(:get).and_return(response)
 
       schedules = ConstantContact::Services::CampaignScheduleService.get_schedules(
@@ -52,7 +52,7 @@ describe ConstantContact::Services::CampaignScheduleService do
       json = load_file('schedule_response.json')
       net_http_resp = Net::HTTPResponse.new(1.0, 200, 'OK')
 
-      response = RestClient::Response.create(json, net_http_resp, {}, @request)
+      response = RestClient::Response.create(json, net_http_resp, @request)
       RestClient.stub(:get).and_return(response)
 
       schedule = ConstantContact::Services::CampaignScheduleService.get_schedule(
@@ -68,12 +68,12 @@ describe ConstantContact::Services::CampaignScheduleService do
       schedule_id = 1
       net_http_resp = Net::HTTPResponse.new(1.0, 204, 'No Content')
 
-      response = RestClient::Response.create('', net_http_resp, {}, @request)
+      response = RestClient::Response.create('', net_http_resp,  @request)
       RestClient.stub(:delete).and_return(response)
 
       result = ConstantContact::Services::CampaignScheduleService.delete_schedule(
         campaign_id, schedule_id)
-      result.should be_true
+      result.should be_truthy
     end
   end
 
@@ -83,7 +83,7 @@ describe ConstantContact::Services::CampaignScheduleService do
       json = load_file('schedule_response.json')
       net_http_resp = Net::HTTPResponse.new(1.0, 200, 'OK')
 
-      response = RestClient::Response.create(json, net_http_resp, {}, @request)
+      response = RestClient::Response.create(json, net_http_resp, @request)
       RestClient.stub(:put).and_return(response)
       schedule = ConstantContact::Components::Schedule.create(JSON.parse(json))
 
@@ -101,7 +101,7 @@ describe ConstantContact::Services::CampaignScheduleService do
       json_response = load_file('test_send_response.json')
       net_http_resp = Net::HTTPResponse.new(1.0, 200, 'OK')
 
-      response = RestClient::Response.create(json_response, net_http_resp, {}, @request)
+      response = RestClient::Response.create(json_response, net_http_resp, @request)
       RestClient.stub(:post).and_return(response)
       test_send = ConstantContact::Components::TestSend.create(JSON.parse(json_request))
 
