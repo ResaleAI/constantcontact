@@ -26,6 +26,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency('rest-client', '~> 2.0', '>= 2.0.0')
   s.add_runtime_dependency('json', '~> 2.3.1', '>= 2.3')
-  s.add_runtime_dependency('mime-types', '~> 2.4', '>= 2.4.1')
+  s.add_runtime_dependency('mime-types', '~> 3.3', '>= 3.3.1')
   s.add_development_dependency('rspec', '~> 2.14')
 end
